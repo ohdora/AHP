@@ -2,12 +2,13 @@
 # текстовый или графический контейнер. Предусмотреть
 # извлечение текста из контейнера.
 
-from stegano import exifHeader
+from stegano import exifHeader # импортируем библиотеку
 
-message = input('Введите ваше секретное послание: \n')
+message = input('Введите ваше секретное послание: \n') # пользователь программы вводит сообщение для зашифровки
 
-secret = exifHeader.hide("img/urfu.jpg", "img/urfu_secret.jpg",f'{message}')
+secret = exifHeader.hide("img/urfu.jpg", "img/urfu_secret.jpg",f'{message}') # заданная строка прячется в графический контейнер
 
-result = exifHeader.reveal("img/urfu_secret.jpg")
-result = result.decode()
-print(result)
+result = exifHeader.reveal("img/urfu_secret.jpg") # чтение изображения с посланием
+result = result.decode() # расшифровка полученного сообщения
+
+print(f'\nПослание, полученное при расшифровке изображения:\n{result}') # вывод расшифрованных данных
